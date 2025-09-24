@@ -1,4 +1,4 @@
-type choreType = {
+export type choreType = {
     title:string,
     desc: string
 }
