@@ -15,7 +15,7 @@ app.get('/api', (req, res) => {
 
 
 //Criar rota de criação de tarefa
-app.post('/criar/tarefa', (req,res)=>{
+app.post('/create/chore', (req,res)=>{
   const tarefa = req.body
   console.log(typeof(tarefa))
   console.table(tarefa)
