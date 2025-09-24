@@ -16,11 +16,9 @@ app.get('/api', (req, res) => {
 
 //Criar rota de criação de tarefa
 app.post('/create/chore', (req,res)=>{
-  const tarefa = req.body
-  console.log(typeof(tarefa))
-  console.table(tarefa)
-
-  // tarefasClass.create(tarefa)
+  const {title, desc} = req.body
+  res.status(201).send("Tarefa criada com sucesso!")
+  tarefasClass.create({title, desc})
 })
 
 
@@ -31,8 +29,16 @@ app.post('/create/chore', (req,res)=>{
 
 
 //Criar rota de exibir tarefas (com ou sem filtro)
+app.get('/list/chore', (req, res)=>{
+  const filtroRaw = req.query.title;
+  const filtro = typeof(filtroRaw) === 'string' ? filtroRaw:undefined
+  const lista = tarefasClass.list(filtro)
+  res.status(200).send(lista)
+})
 
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
+let receba: number = 1
